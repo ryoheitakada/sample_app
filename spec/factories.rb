@@ -9,4 +9,9 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :micropost do
+   content "Lorem ipsum"
+   user #マイクロポストに関連づけられるユーザのことを知らせる。多分:userと勝手に関連づける。
+  end
 end

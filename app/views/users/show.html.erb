@@ -8,5 +8,14 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts"> <!-- order list -->
+        <%= render @microposts %> <!-- マイクロポストのリストが入ってる。micropostのリストに展開される。自動で_micropostパーシャルを参照-->
+      </ol>
+        <%= will_paginate @microposts %> <!-- Usersコントローラの中だったら@usersいらん -->
+    <% end %>
+  </div>
 </div>
 
