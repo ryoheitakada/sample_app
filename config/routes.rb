@@ -1,7 +1,12 @@
 SampleApp::Application.routes.draw do
-  resources :users
+  resources :users do
+    member do #ユーザーidを含むURLにそのルートが応答できるようにする。 
+      get :following, :followers
+    end
+  end
   resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy] #newとかeditはいらない。新しいページ必要ないから！
+  resources :relationships, only: [:create, :destroy]
 
   root 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
